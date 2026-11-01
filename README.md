@@ -27,36 +27,30 @@ and the target column.
 
 ## d. Models used
 
-All five classifiers are trained on the same training partition. Standard
-scaling is included in the Logistic Regression, K-Nearest Neighbors, and SVM
-pipelines; the saved pipeline applies the same preprocessing during evaluation.
-The app loads these saved pipelines and never retrains on uploaded test data.
+All five classifiers are trained on the same training partition. Standard scaling is included in the Logistic Regression, K-Nearest Neighbors, and SVM pipelines; the saved pipeline applies the same preprocessing during evaluation. The app loads these saved pipelines and never retrains on uploaded test data.
 
-The table below is produced by `python train_models.py` on the held-out test
-partition. Precision, recall, and F1 use weighted averaging. AUC is ROC AUC
-using the predicted probability for class `1` (benign).
+The table below is produced by `python train_models.py` on the held-out test partition. Precision, recall, and F1 use weighted averaging. AUC is ROC AUC using the predicted probability for class `1` (benign).
 
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
-|---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | 0.9825 | 0.9954 | 0.9825 | 0.9825 | 0.9825 | 0.9623 |
-| Decision Tree | 0.9123 | 0.9157 | 0.9161 | 0.9123 | 0.9130 | 0.8174 |
-| KNN | 0.9561 | 0.9788 | 0.9561 | 0.9561 | 0.9560 | 0.9054 |
-| Naive Bayes | 0.9386 | 0.9878 | 0.9384 | 0.9386 | 0.9384 | 0.8676 |
-| Support Vector Machine | 0.9825 | 0.9950 | 0.9825 | 0.9825 | 0.9825 | 0.9623 |
+| ML Model Name          | Accuracy | AUC   | Precision | Recall | F1    | MCC   |
+|------------------------|---------:|------:|----------:|-------:|------:|------:|
+| Logistic Regression    | 0.9825  | 0.9954 | 0.9825    | 0.9825 | 0.9825 | 0.9623 |
+| Decision Tree          | 0.9123  | 0.9157 | 0.9161    | 0.9123 | 0.9130 | 0.8174 |
+| K-Nearest Neighbors    | 0.9561  | 0.9788 | 0.9561    | 0.9561 | 0.9560 | 0.9054 |
+| Gaussian Naive Bayes   | 0.9386  | 0.9878 | 0.9384    | 0.9386 | 0.9384 | 0.8676 |
+| Support Vector Machine | 0.9825  | 0.9950 | 0.9825    | 0.9825 | 0.9825 | 0.9623 |
 
 ### Observations
 
-These observations describe this one stratified test split; different splits
-may produce different scores.
+These observations describe this one stratified test split; different splits may produce different scores.
 
-| ML Model Name | Observation about model performance |
-|---|---|
-| Logistic Regression | Tied for top accuracy (0.9825) and MCC (0.9623); it also has the highest AUC (0.9954), indicating excellent ranking on this test split. |
-| Decision Tree | Lowest accuracy (0.9123), AUC (0.9157), and MCC (0.8174) among these runs, though all three remain well above chance. |
-| KNN | Second-highest accuracy (0.9561) and MCC (0.9054); scaling is important for distance-based comparisons. |
-| Naive Bayes | Accuracy is 0.9386, while AUC is 0.9878, suggesting strong ranking even though its selected classification threshold yields fewer correct labels than the top models. |
+| ML Model Name          | Observation about model performance                                                                 |
+|------------------------|-----------------------------------------------------------------------------------------------------|
+| Logistic Regression    | Tied for top accuracy (0.9825) and MCC (0.9623); it also has the highest AUC (0.9954), indicating excellent ranking on this test split. |
+| Decision Tree          | Lowest accuracy (0.9123), AUC (0.9157), and MCC (0.8174) among these runs, though all three remain well above chance. |
+| K-Nearest Neighbors    | Second-highest accuracy (0.9561) and MCC (0.9054); scaling is important for distance-based comparisons. |
+| Gaussian Naive Bayes   | Accuracy is 0.9386, while AUC is 0.9878, suggesting strong ranking even though its selected classification threshold yields fewer correct labels than the top models. |
 | Support Vector Machine | Tied with Logistic Regression for top accuracy (0.9825) and MCC (0.9623); its AUC (0.9950) is marginally below Logistic Regression on this split. |
-| Overall winner | Logistic Regression on this test split: it ties for the best accuracy and MCC and has the highest AUC. The SVM is a close alternative with identical accuracy and MCC. |
+| Overall winner         | Logistic Regression on this test split: it ties for the best accuracy and MCC and has the highest AUC. The SVM is a close alternative with identical accuracy and MCC. |
 
 ## Run locally
 
