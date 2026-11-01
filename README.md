@@ -58,12 +58,15 @@ These observations describe this one stratified test split; different splits may
 2. Train and save the five models and the sample held-out CSV with
    `python train_models.py`.
 3. Start the interface with `streamlit run app.py`.
-4. Upload `test_data.csv` or another labeled test CSV containing all 30
-   feature columns and `target` (`0` = malignant, `1` = benign).
+4. The bundled `test_data.csv` is evaluated automatically when the app opens.
+   To try a different test set, select **Upload your own CSV** in the sidebar
+   and provide all 30 feature columns plus `target` (`0` = malignant,
+   `1` = benign).
 
-The app displays Accuracy, AUC, weighted Precision, weighted Recall, weighted
-F1, and MCC for every saved model, along with a confusion matrix for the
-selected model. If the uploaded target contains only one class, AUC is
+The dashboard displays Accuracy, AUC, weighted Precision, weighted Recall,
+weighted F1, and MCC for every saved model, a model-comparison chart, and an
+interactive prediction explorer with a confusion matrix and downloadable
+predictions. If the evaluation target contains only one class, AUC is
 undefined and is shown as unavailable.
 
 ## Files
