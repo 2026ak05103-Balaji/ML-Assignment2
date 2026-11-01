@@ -1,0 +1,18 @@
+[theme]
+base = "light"
+primaryColor = "#176b70"
+backgroundColor = "#f5f7fa"
+secondaryBackgroundColor = "#edf2f6"
+textColor = "#263445"
+font = "sans serif"
+greenBackgroundColor = "#e8f5ee"
+greenTextColor = "#174d30"
+borderColor = "#d5e0e8"
+dataframeHeaderBackgroundColor = "#e9eff4"
+dataframeHeaderTextColor = "#263445"
+chartCategoricalColors = ["#176b70", "#d18139", "#5577a8", "#8a659e", "#6a9c74"]
+
+[theme.sidebar]
+backgroundColor = "#edf2f6"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#263445"
